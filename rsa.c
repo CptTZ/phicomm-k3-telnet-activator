@@ -86,9 +86,12 @@ newrsa(void)
 		free(bn_d);
 		return NULL;
 	}
+	RSA_set0_key(rsa,bn_n,bn_e,bn_d);
+/*
 	rsa->n = bn_n;
 	rsa->e = bn_e;
 	rsa->d = bn_d;
+*/
 	return rsa;
 }
 
@@ -96,8 +99,10 @@ void
 freersa(RSA* rsa)
 {
 	RSA_free(rsa);
+/*
 	free(rsa->n);
 	free(rsa->e);
 	free(rsa->d);
+*/
 }
 
